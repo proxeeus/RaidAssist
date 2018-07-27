@@ -136,6 +136,7 @@
             this.botsListBox.Name = "botsListBox";
             this.botsListBox.Size = new System.Drawing.Size(241, 368);
             this.botsListBox.TabIndex = 9;
+            this.botsListBox.SelectedIndexChanged += new System.EventHandler(this.botsListBox_SelectedIndexChanged);
             // 
             // label4
             // 

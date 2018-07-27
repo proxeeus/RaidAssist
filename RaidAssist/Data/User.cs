@@ -14,5 +14,6 @@ namespace RaidAssist.Data
         public Character SelectedCharacter { get; set; }
         public List<Character> Characters { get; set; }
         public BotGroup SelectedBotGroup { get; set; }
+        public Bot SelectedBot { get; set; }
     }
 }

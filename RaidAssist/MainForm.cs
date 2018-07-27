@@ -15,7 +15,7 @@ namespace RaidAssist
     public partial class MainForm : Form
     {
         private User _user = new User();
-        private DatabaseConnector _connector = new DatabaseConnector("xxx", "xxx", "xxx", "xxx");
+        private DatabaseConnector _connector = new DatabaseConnector("localhost", "proxeeus_db", "root", "eqemu");
 
         public MainForm()
         {
@@ -91,6 +91,12 @@ namespace RaidAssist
 
             RefreshUI();
 
+        }
+
+        private void botsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var newSelectedBot = ((ListBox)sender).SelectedItem as Bot;
+            _user.SelectedBot = newSelectedBot;
         }
 
         private void RefreshUI()
