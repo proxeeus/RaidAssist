@@ -95,6 +95,29 @@ namespace RaidAssist.Database
             return bots;
         }
 
+        internal BotGroup LoadBotGroup(Character bot)
+        {
+            if (_connection.State == System.Data.ConnectionState.Open)
+            {
+                var query = string.Format("select * from bot_groups where group_leader_id = {0};", bot.Id);
+                var cmd = new MySqlCommand(query, _connection);
+                using (var dataReader = cmd.ExecuteReader())
+                {
+                    if(dataReader.HasRows)
+                        while (dataReader.Read())
+                        {
+                            var botGroup = new BotGroup();
+                            botGroup.GroupName = Convert.ToString(dataReader["group_name"]);
+                            botGroup.GroupIndex = Convert.ToInt32(dataReader["groups_index"]);
+                            botGroup.GroupLeaderId = Convert.ToInt32(dataReader["group_leader_id"]);
+                            return botGroup;
+                        }
+                }
+            }
+
+            return null;
+        }
+
         internal User LogIn(User _user, bool localLogin)
         {
             if(_connection.State == System.Data.ConnectionState.Open)

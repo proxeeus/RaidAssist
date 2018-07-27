@@ -162,6 +162,7 @@
             this.botGroupsComboBox.Name = "botGroupsComboBox";
             this.botGroupsComboBox.Size = new System.Drawing.Size(182, 21);
             this.botGroupsComboBox.TabIndex = 12;
+            this.botGroupsComboBox.SelectedIndexChanged += new System.EventHandler(this.botGroupsComboBox_SelectedIndexChanged);
             // 
             // MainForm
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RaidAssist.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,12 @@ namespace RaidAssist.Utils
 {
     public static class Helpers
     {
+        public static string GetLeaderName(int leaderId, List<Bot> bots)
+        {
+            var bot = (from b in bots where b.Id == leaderId select b).FirstOrDefault();
+
+            return bot.Name;
+        }
         public static string GetClassName(int classId)
         {
             switch (classId)
