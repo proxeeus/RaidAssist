@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using RaidAssist.User;
+using RaidAssist.Data;
 
 namespace RaidAssist.Database
 {
@@ -49,7 +49,7 @@ namespace RaidAssist.Database
             }
         }
 
-        internal List<Character> LoadCharacters(User.User _user)
+        internal List<Character> LoadCharacters(User _user)
         {
             var characters = new List<Character>();
             if(_connection.State == System.Data.ConnectionState.Open)
@@ -95,7 +95,7 @@ namespace RaidAssist.Database
             return bots;
         }
 
-        internal User.User LogIn(User.User _user, bool localLogin)
+        internal User LogIn(User _user, bool localLogin)
         {
             if(_connection.State == System.Data.ConnectionState.Open)
             {

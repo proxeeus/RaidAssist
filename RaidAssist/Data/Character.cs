@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RaidAssist.User
+namespace RaidAssist.Data
 {
     public class Character
     {

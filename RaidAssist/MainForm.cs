@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RaidAssist.User;
+using RaidAssist.Data;
 using RaidAssist.Database;
 
 namespace RaidAssist
 {
     public partial class MainForm : Form
     {
-        private User.User _user = new User.User();
-        private DatabaseConnector _connector = new DatabaseConnector("xxx", "xxx", "xxx", "xxx");
+        private User _user = new User();
+        private DatabaseConnector _connector = new DatabaseConnector("localhost", "proxeeus_db", "root", "eqemu");
 
         public MainForm()
         {

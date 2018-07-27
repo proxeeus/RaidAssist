@@ -39,6 +39,8 @@
             this.closeConnectionButton = new System.Windows.Forms.Button();
             this.botsListBox = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.botGroupsComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // loginTextBox
@@ -144,11 +146,30 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Bots:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(594, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Bot groups:";
+            // 
+            // botGroupsComboBox
+            // 
+            this.botGroupsComboBox.FormattingEnabled = true;
+            this.botGroupsComboBox.Location = new System.Drawing.Point(657, 11);
+            this.botGroupsComboBox.Name = "botGroupsComboBox";
+            this.botGroupsComboBox.Size = new System.Drawing.Size(182, 21);
+            this.botGroupsComboBox.TabIndex = 12;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 429);
+            this.ClientSize = new System.Drawing.Size(859, 429);
+            this.Controls.Add(this.botGroupsComboBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.botsListBox);
             this.Controls.Add(this.closeConnectionButton);
@@ -182,6 +203,8 @@
         private System.Windows.Forms.Button closeConnectionButton;
         private System.Windows.Forms.ListBox botsListBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox botGroupsComboBox;
     }
 }
 
