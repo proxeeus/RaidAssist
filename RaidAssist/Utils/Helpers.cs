@@ -12,8 +12,12 @@ namespace RaidAssist.Utils
         public static string GetLeaderName(int leaderId, List<Bot> bots)
         {
             var bot = (from b in bots where b.Id == leaderId select b).FirstOrDefault();
-
-            return bot.Name;
+            if(bot != null)
+            {
+                bot.IsLeader = true;
+                return bot.Name;
+            }
+            return string.Empty;
         }
         public static string GetClassName(int classId)
         {

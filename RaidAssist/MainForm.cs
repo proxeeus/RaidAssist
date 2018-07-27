@@ -89,6 +89,23 @@ namespace RaidAssist
             LoadBots(_user.SelectedCharacter);
             LoatBotGroups(_user.SelectedCharacter); // Based on all bots IDs, will return a list of Groups led by one bot
 
+            RefreshUI();
+
+        }
+
+        private void RefreshUI()
+        {
+            if (_user.SelectedCharacter.Bots != null && _user.SelectedCharacter.Bots.Count > 0)
+            {
+                botsListBox.DataSource = _user.SelectedCharacter.Bots;
+                botsListBox.DisplayMember = "DisplayName";
+            }
+            if (_user.SelectedCharacter.BotGroups != null && _user.SelectedCharacter.BotGroups.Count > 0)
+            {
+                _user.SelectedCharacter.BotGroups = _user.SelectedCharacter.BotGroups.Where(w => w != null).Distinct().ToList();
+                botGroupsComboBox.DataSource = _user.SelectedCharacter.BotGroups;
+                botGroupsComboBox.DisplayMember = "DisplayName";
+            }
         }
 
         private void LoatBotGroups(Character selectedCharacter)
@@ -105,25 +122,13 @@ namespace RaidAssist
                         selectedCharacter.BotGroups.Add(botGroup);
                     }
                 }
-
-                if(selectedCharacter.BotGroups.Count > 0)
-                {
-                    selectedCharacter.BotGroups = selectedCharacter.BotGroups.Where(w => w != null).Distinct().ToList();
-                    botGroupsComboBox.DataSource = selectedCharacter.BotGroups;
-                    botGroupsComboBox.DisplayMember = "DisplayName";
-                }
-
             }
         }
 
         private void LoadBots(Character selectedCharacter)
         {
             selectedCharacter.Bots = _connector.LoadBots(selectedCharacter);
-            if(selectedCharacter.Bots.Count > 0)
-            {
-                botsListBox.DataSource = selectedCharacter.Bots;
-                botsListBox.DisplayMember = "DisplayName";
-            }
+
         }
 
         private void closeConnectionButton_Click(object sender, EventArgs e)
@@ -136,7 +141,5 @@ namespace RaidAssist
             if (_connector.Connection != null && _connector.Connection.State == ConnectionState.Open)
                 _connector.CloseConnection();
         }
-
-
     }
 }
