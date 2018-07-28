@@ -15,7 +15,7 @@ namespace RaidAssist.GUI
     public partial class MainForm : Form
     {
         private User _user = new User();
-        private DatabaseConnector _connector = new DatabaseConnector("xxx", "xxx", "xxx", "xxx");
+        private DatabaseConnector _connector = new DatabaseConnector("localhost", "proxeeus_db", "root", "eqemu");
 
         public MainForm()
         {
@@ -199,7 +199,6 @@ namespace RaidAssist.GUI
                 var dialogResult = createForm.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    createForm.NewGroup.Members = new List<Bot>();
                     botGroupMembersListBox.DataSource = createForm.NewGroup.Members;
                     botGroupMembersListBox.DisplayMember = "DisplayName";
                     RefreshUI();
@@ -207,6 +206,35 @@ namespace RaidAssist.GUI
             }
             else
                 MessageBox.Show("You need to select a valid Bot to act as Group Leader.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void deleteGroupButton_Click(object sender, EventArgs e)
+        {
+            if(_user.SelectedBotGroup != null)
+            {
+                var dialogResult = MessageBox.Show("Are you sure you want to delete this Bot Group? This CANNOT be undone!", "Confirm deletion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if(dialogResult == DialogResult.OK)
+                {
+                    var groupDeleted = _connector.DeleteBotGroup(_user.SelectedBotGroup);
+                    if(groupDeleted)
+                    {
+                        _user.SelectedCharacter.BotGroups.Remove(_user.SelectedBotGroup);
+                        // Need to update all member status (no leader / member tag)
+                        if(_user.SelectedBotGroup.Members != null && _user.SelectedBotGroup.Members.Count >0)
+                            foreach(var bot in _user.SelectedBotGroup.Members)
+                            {
+                                bot.IsLeader = false;
+                                bot.IsMember = false;
+                            }
+                        RefreshUI();
+                    }
+                    else
+                        MessageBox.Show("Couldn't delete Bot Group.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            else
+                MessageBox.Show("You need to select a Group Bot to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

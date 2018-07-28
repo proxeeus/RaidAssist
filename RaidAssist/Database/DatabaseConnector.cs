@@ -191,6 +191,27 @@ namespace RaidAssist.Database
             return null;
         }
 
+        internal bool DeleteBotGroup(BotGroup botGroup)
+        {
+            if (_connection.State == System.Data.ConnectionState.Open)
+            {
+                var memberQuery = string.Format("delete from bot_group_members where groups_index={0};", botGroup.GroupIndex);
+                var cmd = new MySqlCommand(memberQuery, _connection);
+                var result = cmd.ExecuteNonQuery();
+                if (result != -1)
+                {
+                    var queryLeader = string.Format("delete from bot_groups where group_leader_id = {0};", botGroup.GroupLeaderId);
+                    cmd = new MySqlCommand(queryLeader, _connection);
+                    result = cmd.ExecuteNonQuery();
+                    if (result != -1)
+                        return true;
+                }
+                else
+                    return false;
+            }
+            return false;
+        }
+
         internal List<Bot> LoadBotGroupMembers(BotGroup botGroup)
         {
             var botGroupMembers = new List<Bot>();

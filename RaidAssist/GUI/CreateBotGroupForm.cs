@@ -40,6 +40,9 @@ namespace RaidAssist.GUI
             {
                 if (_character.BotGroups == null)
                     _character.BotGroups = new List<BotGroup>();
+                if (botGroup.Members == null)
+                    botGroup.Members = new List<Bot>();
+                botGroup.Members.Add(_bot);
                 _character.BotGroups.Add(botGroup);
                 this.NewGroup = botGroup;
             }

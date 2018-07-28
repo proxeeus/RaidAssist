@@ -185,6 +185,7 @@
             this.deleteGroupButton.TabIndex = 13;
             this.deleteGroupButton.Text = "Delete";
             this.deleteGroupButton.UseVisualStyleBackColor = true;
+            this.deleteGroupButton.Click += new System.EventHandler(this.deleteGroupButton_Click);
             // 
             // createGroupButton
             // 
