@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using RaidAssist.Data;
 using RaidAssist.Database;
 
-namespace RaidAssist
+namespace RaidAssist.GUI
 {
     public partial class MainForm : Form
     {
@@ -167,6 +167,19 @@ namespace RaidAssist
         {
             if (_connector.Connection != null && _connector.Connection.State == ConnectionState.Open)
                 _connector.CloseConnection();
+        }
+
+        private void renameGroupButton_Click(object sender, EventArgs e)
+        {
+            if (_user.SelectedBotGroup != null)
+            {
+                var renameForm = new RenameBotGroupForm(_user.SelectedBotGroup, _connector);
+                var dialogResult = renameForm.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                    RefreshUI();
+            }
+            else
+                MessageBox.Show("You need to select a Bot Group to rename.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

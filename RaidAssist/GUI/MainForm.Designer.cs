@@ -1,4 +1,4 @@
-﻿namespace RaidAssist
+﻿namespace RaidAssist.GUI
 {
     partial class MainForm
     {
@@ -42,6 +42,9 @@
             this.botGroupsComboBox = new System.Windows.Forms.ComboBox();
             this.botsListBox = new System.Windows.Forms.ListBox();
             this.botGroupMembersListBox = new System.Windows.Forms.ListBox();
+            this.deleteGroupButton = new System.Windows.Forms.Button();
+            this.createGroupButton = new System.Windows.Forms.Button();
+            this.renameGroupButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginTextBox
@@ -171,14 +174,45 @@
             this.botGroupMembersListBox.FormattingEnabled = true;
             this.botGroupMembersListBox.Location = new System.Drawing.Point(657, 38);
             this.botGroupMembersListBox.Name = "botGroupMembersListBox";
-            this.botGroupMembersListBox.Size = new System.Drawing.Size(181, 69);
+            this.botGroupMembersListBox.Size = new System.Drawing.Size(181, 82);
             this.botGroupMembersListBox.TabIndex = 9;
+            // 
+            // deleteGroupButton
+            // 
+            this.deleteGroupButton.Location = new System.Drawing.Point(845, 11);
+            this.deleteGroupButton.Name = "deleteGroupButton";
+            this.deleteGroupButton.Size = new System.Drawing.Size(91, 23);
+            this.deleteGroupButton.TabIndex = 13;
+            this.deleteGroupButton.Text = "Delete";
+            this.deleteGroupButton.UseVisualStyleBackColor = true;
+            // 
+            // createGroupButton
+            // 
+            this.createGroupButton.Location = new System.Drawing.Point(844, 40);
+            this.createGroupButton.Name = "createGroupButton";
+            this.createGroupButton.Size = new System.Drawing.Size(91, 23);
+            this.createGroupButton.TabIndex = 14;
+            this.createGroupButton.Text = "Create";
+            this.createGroupButton.UseVisualStyleBackColor = true;
+            // 
+            // renameGroupButton
+            // 
+            this.renameGroupButton.Location = new System.Drawing.Point(845, 69);
+            this.renameGroupButton.Name = "renameGroupButton";
+            this.renameGroupButton.Size = new System.Drawing.Size(91, 23);
+            this.renameGroupButton.TabIndex = 15;
+            this.renameGroupButton.Text = "Rename";
+            this.renameGroupButton.UseVisualStyleBackColor = true;
+            this.renameGroupButton.Click += new System.EventHandler(this.renameGroupButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 429);
+            this.ClientSize = new System.Drawing.Size(948, 429);
+            this.Controls.Add(this.renameGroupButton);
+            this.Controls.Add(this.createGroupButton);
+            this.Controls.Add(this.deleteGroupButton);
             this.Controls.Add(this.botGroupsComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -218,6 +252,9 @@
         private System.Windows.Forms.ComboBox botGroupsComboBox;
         private System.Windows.Forms.ListBox botsListBox;
         private System.Windows.Forms.ListBox botGroupMembersListBox;
+        private System.Windows.Forms.Button deleteGroupButton;
+        private System.Windows.Forms.Button createGroupButton;
+        private System.Windows.Forms.Button renameGroupButton;
     }
 }
 

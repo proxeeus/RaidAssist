@@ -16,7 +16,9 @@ namespace RaidAssist.Data
             get
             {
                 if (IsLeader)
-                    return base.DisplayName + " (Group Leader)";
+                    return base.DisplayName + " (GROUP LEADER)";
+                else if (IsMember)
+                    return base.DisplayName + " (MEMBER)";
                 else
                     return base.DisplayName;
             }

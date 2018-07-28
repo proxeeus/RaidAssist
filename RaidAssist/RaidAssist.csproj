@@ -52,11 +52,17 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseConnector.cs" />
     <Compile Include="Data\BotGroup.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="GUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\RenameBotGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\RenameBotGroupForm.Designer.cs">
+      <DependentUpon>RenameBotGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,8 +71,11 @@
     <Compile Include="Data\User.cs" />
     <Compile Include="Utils\Crypto.cs" />
     <Compile Include="Utils\Helpers.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\RenameBotGroupForm.resx">
+      <DependentUpon>RenameBotGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,6 +99,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -34,6 +34,8 @@ namespace RaidAssist.Database
             _connection = new MySqlConnection(connectionString);
         }
 
+
+
         //open connection to database
         public bool OpenConnection()
         {
@@ -47,6 +49,27 @@ namespace RaidAssist.Database
                 Console.WriteLine(ex.Message);
                 return false;
             }
+        }
+
+        internal bool RenameBotGroup(BotGroup botGroup, string newName)
+        {
+            if (_connection.State == System.Data.ConnectionState.Open)
+            {
+                var nameCheckQuery = string.Format("select * from bot_groups where group_name = '{0}';", newName);
+                var cmd = new MySqlCommand(nameCheckQuery, _connection);
+                using (var dataReader = cmd.ExecuteReader())
+                {
+                    if (dataReader.HasRows)
+                        return false;
+                }
+
+                var updateQuery = string.Format("update bot_groups set group_name = '{0}' where groups_index = {1};", newName, botGroup.GroupIndex);
+                cmd = new MySqlCommand(updateQuery, _connection);
+                var result = cmd.ExecuteNonQuery();
+                if (result != -1)
+                    return true;
+            }
+            return false;
         }
 
         internal List<Character> LoadCharacters(User _user)
@@ -91,6 +114,20 @@ namespace RaidAssist.Database
                         bots.Add(bot);
                     }
                 }
+
+                foreach(var bot in bots)
+                {
+                    query = string.Format("select * from bot_group_members where bot_id={0};", bot.Id);
+                    cmd = new MySqlCommand(query, _connection);
+                    using (var dataReader = cmd.ExecuteReader())
+                    {
+                        while(dataReader.Read())
+                        {
+                            if(!bot.IsLeader)
+                                bot.IsMember = true;
+                        }
+                    }
+                }
             }
             return bots;
         }
@@ -132,7 +169,7 @@ namespace RaidAssist.Database
                         {
                             var bot = new Bot();
                             bot.Id = Convert.ToInt32(dataReader["bot_id"]);
-                            bot.IsMember = true;
+                            //bot.IsMember = true;
                             botGroupMembers.Add(bot);
                         }
                 }
