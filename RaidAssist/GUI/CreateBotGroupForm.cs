@@ -42,7 +42,12 @@ namespace RaidAssist.GUI
                     _character.BotGroups = new List<BotGroup>();
                 if (botGroup.Members == null)
                     botGroup.Members = new List<Bot>();
-                botGroup.Members.Add(_bot);
+                //_bot.IsLeader = true;
+
+                var botToModify = (from b in _character.Bots where _bot.Id == b.Id select b).FirstOrDefault();
+                botToModify.IsLeader = true;
+                //botGroup.Members.Add(_bot);
+                botGroup.Members.Add(botToModify);
                 _character.BotGroups.Add(botGroup);
                 this.NewGroup = botGroup;
             }

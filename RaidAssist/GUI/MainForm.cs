@@ -15,7 +15,7 @@ namespace RaidAssist.GUI
     public partial class MainForm : Form
     {
         private User _user = new User();
-        private DatabaseConnector _connector = new DatabaseConnector("localhost", "proxeeus_db", "root", "eqemu");
+        private DatabaseConnector _connector = new DatabaseConnector("xxx", "xxx", "xxx", "xxx");
 
         public MainForm()
         {
@@ -102,10 +102,7 @@ namespace RaidAssist.GUI
 
             LoadBots(_user.SelectedCharacter);
             LoatBotGroups(_user.SelectedCharacter); // Based on all bots IDs, will return a list of Groups led by one bot
-            //LoadBotGroupMembers(_user.SelectedBotGroup);
             RefreshUI();
-            
-
         }
 
 
@@ -119,11 +116,15 @@ namespace RaidAssist.GUI
         {
             if (_user.SelectedCharacter.Bots != null && _user.SelectedCharacter.Bots.Count > 0)
             {
+                botsListBox.DataSource = null;
+                botsListBox.DisplayMember = null;
                 botsListBox.DataSource = _user.SelectedCharacter.Bots;
                 botsListBox.DisplayMember = "DisplayName";
             }
             if (_user.SelectedCharacter.BotGroups != null && _user.SelectedCharacter.BotGroups.Count > 0)
             {
+                botGroupsComboBox.DataSource = null;
+                botGroupsComboBox.DisplayMember = null;
                 _user.SelectedCharacter.BotGroups = _user.SelectedCharacter.BotGroups.Where(w => w != null).Distinct().ToList();
                 botGroupsComboBox.DataSource = _user.SelectedCharacter.BotGroups;
                 botGroupsComboBox.DisplayMember = "DisplayName";
@@ -223,6 +224,9 @@ namespace RaidAssist.GUI
                         if(_user.SelectedBotGroup.Members != null && _user.SelectedBotGroup.Members.Count >0)
                             foreach(var bot in _user.SelectedBotGroup.Members)
                             {
+                                var botToModify = (from b in _user.SelectedCharacter.Bots where bot.Id == b.Id select b).FirstOrDefault();
+                                botToModify.IsLeader = false;
+                                botToModify.IsMember = false;
                                 bot.IsLeader = false;
                                 bot.IsMember = false;
                             }
@@ -230,7 +234,6 @@ namespace RaidAssist.GUI
                     }
                     else
                         MessageBox.Show("Couldn't delete Bot Group.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
             else
