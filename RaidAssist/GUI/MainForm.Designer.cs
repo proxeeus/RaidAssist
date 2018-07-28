@@ -179,7 +179,7 @@
             // 
             // deleteGroupButton
             // 
-            this.deleteGroupButton.Location = new System.Drawing.Point(845, 11);
+            this.deleteGroupButton.Location = new System.Drawing.Point(844, 64);
             this.deleteGroupButton.Name = "deleteGroupButton";
             this.deleteGroupButton.Size = new System.Drawing.Size(91, 23);
             this.deleteGroupButton.TabIndex = 13;
@@ -188,16 +188,17 @@
             // 
             // createGroupButton
             // 
-            this.createGroupButton.Location = new System.Drawing.Point(844, 40);
+            this.createGroupButton.Location = new System.Drawing.Point(844, 11);
             this.createGroupButton.Name = "createGroupButton";
             this.createGroupButton.Size = new System.Drawing.Size(91, 23);
             this.createGroupButton.TabIndex = 14;
             this.createGroupButton.Text = "Create";
             this.createGroupButton.UseVisualStyleBackColor = true;
+            this.createGroupButton.Click += new System.EventHandler(this.createGroupButton_Click);
             // 
             // renameGroupButton
             // 
-            this.renameGroupButton.Location = new System.Drawing.Point(845, 69);
+            this.renameGroupButton.Location = new System.Drawing.Point(844, 38);
             this.renameGroupButton.Name = "renameGroupButton";
             this.renameGroupButton.Size = new System.Drawing.Size(91, 23);
             this.renameGroupButton.TabIndex = 15;

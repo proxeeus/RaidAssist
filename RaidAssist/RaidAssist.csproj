@@ -58,6 +58,12 @@
     <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\CreateBotGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CreateBotGroupForm.Designer.cs">
+      <DependentUpon>CreateBotGroupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RenameBotGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="Utils\Helpers.cs" />
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CreateBotGroupForm.resx">
+      <DependentUpon>CreateBotGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\RenameBotGroupForm.resx">
       <DependentUpon>RenameBotGroupForm.cs</DependentUpon>

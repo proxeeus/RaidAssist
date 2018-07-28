@@ -82,6 +82,10 @@ namespace RaidAssist.GUI
                 botGroupMembersListBox.DataSource = _user.SelectedBotGroup.Members;
                 botGroupMembersListBox.DisplayMember = "DisplayName";
             }
+            else if(_user.SelectedBotGroup != null && (_user.SelectedBotGroup.Members != null || _user.SelectedBotGroup.Members.Count == 0))
+            {
+                botGroupMembersListBox.DataSource = null;
+            }
         }
 
         private void characterComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,7 +151,7 @@ namespace RaidAssist.GUI
 
         private void LoadBotGroupMembers(BotGroup botGroup)
         {
-            if(botGroup != null)
+            if (botGroup != null)
                 botGroup.Members = _connector.LoadBotGroupMembers(botGroup);
 
         }
@@ -180,6 +184,29 @@ namespace RaidAssist.GUI
             }
             else
                 MessageBox.Show("You need to select a Bot Group to rename.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void createGroupButton_Click(object sender, EventArgs e)
+        {
+            if(_user.SelectedBot != null)
+            {
+                if (_user.SelectedBot.IsLeader || _user.SelectedBot.IsMember)
+                {
+                    MessageBox.Show(string.Format("{0} is already a member of a Bot Group.", _user.SelectedBot.Name), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var createForm = new CreateBotGroupForm(_user.SelectedCharacter,_user.SelectedBot, _connector);
+                var dialogResult = createForm.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    createForm.NewGroup.Members = new List<Bot>();
+                    botGroupMembersListBox.DataSource = createForm.NewGroup.Members;
+                    botGroupMembersListBox.DisplayMember = "DisplayName";
+                    RefreshUI();
+                }
+            }
+            else
+                MessageBox.Show("You need to select a valid Bot to act as Group Leader.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
