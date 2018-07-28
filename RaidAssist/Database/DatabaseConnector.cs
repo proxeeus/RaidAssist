@@ -88,20 +88,30 @@ namespace RaidAssist.Database
                 if (result == -1)
                     return null;
 
+                
+                var botGroup = new BotGroup();
+
                 var groupCheckQuery = string.Format("select * from bot_groups where group_leader_id = '{0}';", bot.Id);
                 cmd = new MySqlCommand(groupCheckQuery, _connection);
                 using (var dataReader = cmd.ExecuteReader())
                 {
                     while(dataReader.Read())
                     {
-                        var botGroup = new BotGroup();
+                        botGroup = new BotGroup();
                         botGroup.GroupLeaderId = Convert.ToInt32(dataReader["group_leader_id"]);
                         botGroup.GroupName = Convert.ToString(dataReader["group_name"]);
                         botGroup.GroupIndex = Convert.ToInt32(dataReader["groups_index"]);
                         botGroup.LeaderName = bot.Name;
-                        return botGroup;
                     }
                 }
+
+                insertQuery = string.Format("insert into bot_group_members (groups_index, bot_id) values ('{0}', '{1}');", botGroup.GroupIndex, bot.Id);
+                cmd = new MySqlCommand(insertQuery, _connection);
+                result = cmd.ExecuteNonQuery();
+                if (result == -1)
+                    return null;
+
+                return botGroup;
             }
 
             return null;
