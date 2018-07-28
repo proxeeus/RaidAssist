@@ -118,6 +118,44 @@ namespace RaidAssist.Database
             return null;
         }
 
+        internal List<Bot> LoadBotGroupMembers(BotGroup botGroup)
+        {
+            var botGroupMembers = new List<Bot>();
+            if (_connection.State == System.Data.ConnectionState.Open)
+            {
+                var query = string.Format("select * from bot_group_members where groups_index = {0};", botGroup.GroupIndex) ;
+                var cmd = new MySqlCommand(query, _connection);
+                using (var dataReader = cmd.ExecuteReader())
+                {
+                    if (dataReader.HasRows)
+                        while (dataReader.Read())
+                        {
+                            var bot = new Bot();
+                            bot.Id = Convert.ToInt32(dataReader["bot_id"]);
+                            bot.IsMember = true;
+                            botGroupMembers.Add(bot);
+                        }
+                }
+
+                foreach (var bot in botGroupMembers)
+                {
+                    query = string.Format("select * from bot_data where bot_id = {0};", bot.Id);
+                    cmd = new MySqlCommand(query, _connection);
+                    using (var dataReader = cmd.ExecuteReader())
+                    {
+                        if (dataReader.HasRows)
+                            while (dataReader.Read())
+                            {
+                                bot.Name = Convert.ToString(dataReader["name"]);
+                                bot.ClassId = Convert.ToInt32(dataReader["class"]);
+                            }
+                    }
+                }
+            }
+
+            return botGroupMembers;
+        }
+
         internal User LogIn(User _user, bool localLogin)
         {
             if(_connection.State == System.Data.ConnectionState.Open)
@@ -156,6 +194,7 @@ namespace RaidAssist.Database
 
             return _user;
         }
+
 
         //Close connection
         public bool CloseConnection()

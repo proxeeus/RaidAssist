@@ -15,7 +15,7 @@ namespace RaidAssist
     public partial class MainForm : Form
     {
         private User _user = new User();
-        private DatabaseConnector _connector = new DatabaseConnector("localhost", "proxeeus_db", "root", "eqemu");
+        private DatabaseConnector _connector = new DatabaseConnector("xxx", "xxx", "xxx", "xxx");
 
         public MainForm()
         {
@@ -74,6 +74,14 @@ namespace RaidAssist
         {
             var newSelectedBotGroup = ((ComboBox)sender).SelectedItem as BotGroup;
             _user.SelectedBotGroup = newSelectedBotGroup;
+
+            LoadBotGroupMembers(_user.SelectedBotGroup);
+
+            if (_user.SelectedBotGroup != null && _user.SelectedBotGroup.Members != null && _user.SelectedBotGroup.Members.Count > 0)
+            {
+                botGroupMembersListBox.DataSource = _user.SelectedBotGroup.Members;
+                botGroupMembersListBox.DisplayMember = "DisplayName";
+            }
         }
 
         private void characterComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,13 +93,17 @@ namespace RaidAssist
             botGroupsComboBox.DisplayMember = null;
             botsListBox.DataSource = null;
             botsListBox.DisplayMember = null;
+            botGroupMembersListBox.DataSource = null;
+            botGroupMembersListBox.DisplayMember = null;
 
             LoadBots(_user.SelectedCharacter);
             LoatBotGroups(_user.SelectedCharacter); // Based on all bots IDs, will return a list of Groups led by one bot
-
+            //LoadBotGroupMembers(_user.SelectedBotGroup);
             RefreshUI();
+            
 
         }
+
 
         private void botsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -111,7 +123,8 @@ namespace RaidAssist
                 _user.SelectedCharacter.BotGroups = _user.SelectedCharacter.BotGroups.Where(w => w != null).Distinct().ToList();
                 botGroupsComboBox.DataSource = _user.SelectedCharacter.BotGroups;
                 botGroupsComboBox.DisplayMember = "DisplayName";
-            }
+            }     
+
         }
 
         private void LoatBotGroups(Character selectedCharacter)
@@ -129,6 +142,14 @@ namespace RaidAssist
                     }
                 }
             }
+        }
+
+
+        private void LoadBotGroupMembers(BotGroup botGroup)
+        {
+            if(botGroup != null)
+                botGroup.Members = _connector.LoadBotGroupMembers(botGroup);
+
         }
 
         private void LoadBots(Character selectedCharacter)

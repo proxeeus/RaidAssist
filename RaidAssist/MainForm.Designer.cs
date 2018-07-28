@@ -37,10 +37,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.localCheckBox = new System.Windows.Forms.CheckBox();
             this.closeConnectionButton = new System.Windows.Forms.Button();
-            this.botsListBox = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.botGroupsComboBox = new System.Windows.Forms.ComboBox();
+            this.botsListBox = new System.Windows.Forms.ListBox();
+            this.botGroupMembersListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // loginTextBox
@@ -129,15 +130,6 @@
             this.closeConnectionButton.UseVisualStyleBackColor = true;
             this.closeConnectionButton.Click += new System.EventHandler(this.closeConnectionButton_Click);
             // 
-            // botsListBox
-            // 
-            this.botsListBox.FormattingEnabled = true;
-            this.botsListBox.Location = new System.Drawing.Point(347, 38);
-            this.botsListBox.Name = "botsListBox";
-            this.botsListBox.Size = new System.Drawing.Size(241, 368);
-            this.botsListBox.TabIndex = 9;
-            this.botsListBox.SelectedIndexChanged += new System.EventHandler(this.botsListBox_SelectedIndexChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -165,6 +157,23 @@
             this.botGroupsComboBox.TabIndex = 12;
             this.botGroupsComboBox.SelectedIndexChanged += new System.EventHandler(this.botGroupsComboBox_SelectedIndexChanged);
             // 
+            // botsListBox
+            // 
+            this.botsListBox.FormattingEnabled = true;
+            this.botsListBox.Location = new System.Drawing.Point(347, 38);
+            this.botsListBox.Name = "botsListBox";
+            this.botsListBox.Size = new System.Drawing.Size(241, 368);
+            this.botsListBox.TabIndex = 9;
+            this.botsListBox.SelectedIndexChanged += new System.EventHandler(this.botsListBox_SelectedIndexChanged);
+            // 
+            // botGroupMembersListBox
+            // 
+            this.botGroupMembersListBox.FormattingEnabled = true;
+            this.botGroupMembersListBox.Location = new System.Drawing.Point(657, 38);
+            this.botGroupMembersListBox.Name = "botGroupMembersListBox";
+            this.botGroupMembersListBox.Size = new System.Drawing.Size(181, 69);
+            this.botGroupMembersListBox.TabIndex = 9;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,6 +182,7 @@
             this.Controls.Add(this.botGroupsComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.botGroupMembersListBox);
             this.Controls.Add(this.botsListBox);
             this.Controls.Add(this.closeConnectionButton);
             this.Controls.Add(this.localCheckBox);
@@ -203,10 +213,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox localCheckBox;
         private System.Windows.Forms.Button closeConnectionButton;
-        private System.Windows.Forms.ListBox botsListBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox botGroupsComboBox;
+        private System.Windows.Forms.ListBox botsListBox;
+        private System.Windows.Forms.ListBox botGroupMembersListBox;
     }
 }
 

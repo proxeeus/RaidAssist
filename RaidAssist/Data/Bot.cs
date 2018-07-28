@@ -9,6 +9,7 @@ namespace RaidAssist.Data
     public class Bot : Character
     {
         public bool IsLeader { get; set; }
+        public bool IsMember { get; set; }
 
         public override string DisplayName
         {

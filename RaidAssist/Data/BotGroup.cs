@@ -12,6 +12,7 @@ namespace RaidAssist.Data
         public int GroupLeaderId { get; set; }
         public string LeaderName { get; set; }
         public string GroupName { get; set; }
+        public List<Bot> Members { get; set; }
         public string DisplayName
         {
             get
