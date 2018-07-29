@@ -145,6 +145,7 @@
             this.botsListBox.FormattingEnabled = true;
             this.botsListBox.Location = new System.Drawing.Point(6, 46);
             this.botsListBox.Name = "botsListBox";
+            this.botsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.botsListBox.Size = new System.Drawing.Size(241, 329);
             this.botsListBox.TabIndex = 9;
             this.botsListBox.SelectedIndexChanged += new System.EventHandler(this.botsListBox_SelectedIndexChanged);

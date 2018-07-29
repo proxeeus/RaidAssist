@@ -316,7 +316,42 @@ namespace RaidAssist.GUI
 
         private void addBotToGroup_Click(object sender, EventArgs e)
         {
-            if (_user.SelectedBot != null && _user.SelectedBotGroup != null)
+            if(botsListBox.SelectedItems.Count > 0 && _user.SelectedBotGroup != null)
+            {
+                if (_user.SelectedBotGroup.Members.Count() >= 6)
+                {
+                    MessageBox.Show("The selected Bot Group is already at maximum capacity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Calculate max group capacity (if we have more selected bots than the group has space for, we must throw an error)
+                var slotsLeft = 6 - _user.SelectedBotGroup.Members.Count();
+                if(botsListBox.SelectedItems.Count > slotsLeft)
+                {
+                    MessageBox.Show("You have selected more Bots than what the target group can accept.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                foreach (var bot in botsListBox.SelectedItems)
+                {
+                    var currentBot = bot as Bot;
+                    var addedToGroup = _connector.AddBotToGroup(currentBot, _user.SelectedBotGroup);
+
+                    if (addedToGroup)
+                    {
+                        var botToUpdate = (from b in _user.SelectedCharacter.Bots where b.Id == currentBot.Id select b).SingleOrDefault();
+                        botToUpdate.IsMember = true;
+                        botToUpdate.GroupId = _user.SelectedBotGroup.GroupIndex;
+
+                        var botGroupToUpdate = (from g in _user.SelectedCharacter.BotGroups where g.GroupIndex == _user.SelectedBotGroup.GroupIndex select g).FirstOrDefault();
+                        if (botGroupToUpdate.Members == null)
+                            botGroupToUpdate.Members = new List<Bot>();
+                        botGroupToUpdate.Members.Add(botToUpdate);
+                    }
+                }
+                RefreshUI();
+            } 
+            else if (_user.SelectedBot != null && _user.SelectedBotGroup != null)
             {
                 if (_user.SelectedBotGroup.Members.Count() >= 6)
                 {
