@@ -110,6 +110,8 @@ namespace RaidAssist.GUI
         {
             var newSelectedBot = ((ListBox)sender).SelectedItem as Bot;
             _user.SelectedBot = newSelectedBot;
+            if(_user.SelectedBot != null)
+                this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}] - [{2}]", _user.UserName, _user.SelectedCharacter.Name, _user.SelectedBot.Name);
         }
 
         private void RefreshUI()
@@ -128,8 +130,12 @@ namespace RaidAssist.GUI
                 _user.SelectedCharacter.BotGroups = _user.SelectedCharacter.BotGroups.Where(w => w != null).Distinct().ToList();
                 botGroupsComboBox.DataSource = _user.SelectedCharacter.BotGroups;
                 botGroupsComboBox.DisplayMember = "DisplayName";
-            }     
+            }
 
+            if(_user != null && _user.SelectedCharacter != null && _user.SelectedBot != null)
+                this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}] - [{2}]", _user.UserName, _user.SelectedCharacter.Name, _user.SelectedBot.Name);
+            else if(_user.SelectedBot == null)
+                this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}]", _user.UserName, _user.SelectedCharacter.Name);
         }
 
         private void LoatBotGroups(Character selectedCharacter)
