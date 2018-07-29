@@ -48,10 +48,15 @@
             this.botRemoveFromGroup = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.botGroupsTab = new System.Windows.Forms.TabPage();
+            this.healRotationsTab = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.botGroupsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // loginTextBox
@@ -146,7 +151,7 @@
             this.botsListBox.Location = new System.Drawing.Point(6, 46);
             this.botsListBox.Name = "botsListBox";
             this.botsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.botsListBox.Size = new System.Drawing.Size(241, 329);
+            this.botsListBox.Size = new System.Drawing.Size(241, 342);
             this.botsListBox.TabIndex = 9;
             this.botsListBox.SelectedIndexChanged += new System.EventHandler(this.botsListBox_SelectedIndexChanged);
             // 
@@ -196,7 +201,7 @@
             this.groupBox1.Controls.Add(this.botGroupsComboBox);
             this.groupBox1.Controls.Add(this.deleteGroupButton);
             this.groupBox1.Controls.Add(this.botGroupMembersListBox);
-            this.groupBox1.Location = new System.Drawing.Point(550, 11);
+            this.groupBox1.Location = new System.Drawing.Point(286, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(253, 215);
             this.groupBox1.TabIndex = 16;
@@ -207,7 +212,7 @@
             // 
             this.groupBox2.Controls.Add(this.botRemoveFromGroup);
             this.groupBox2.Controls.Add(this.addBotToGroup);
-            this.groupBox2.Location = new System.Drawing.Point(550, 232);
+            this.groupBox2.Location = new System.Drawing.Point(286, 226);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(253, 174);
             this.groupBox2.TabIndex = 17;
@@ -254,22 +259,53 @@
             // 
             this.groupBox4.Controls.Add(this.characterComboBox);
             this.groupBox4.Controls.Add(this.botsListBox);
-            this.groupBox4.Location = new System.Drawing.Point(270, 12);
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(260, 394);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Select your character";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.botGroupsTab);
+            this.tabControl1.Controls.Add(this.healRotationsTab);
+            this.tabControl1.Location = new System.Drawing.Point(264, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(558, 435);
+            this.tabControl1.TabIndex = 20;
+            // 
+            // botGroupsTab
+            // 
+            this.botGroupsTab.Controls.Add(this.groupBox4);
+            this.botGroupsTab.Controls.Add(this.groupBox1);
+            this.botGroupsTab.Controls.Add(this.groupBox2);
+            this.botGroupsTab.Location = new System.Drawing.Point(4, 22);
+            this.botGroupsTab.Name = "botGroupsTab";
+            this.botGroupsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.botGroupsTab.Size = new System.Drawing.Size(550, 409);
+            this.botGroupsTab.TabIndex = 0;
+            this.botGroupsTab.Text = "Bots & Groups";
+            this.botGroupsTab.UseVisualStyleBackColor = true;
+            // 
+            // healRotationsTab
+            // 
+            this.healRotationsTab.Location = new System.Drawing.Point(4, 22);
+            this.healRotationsTab.Name = "healRotationsTab";
+            this.healRotationsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.healRotationsTab.Size = new System.Drawing.Size(550, 409);
+            this.healRotationsTab.TabIndex = 1;
+            this.healRotationsTab.Text = "Heal Rotations";
+            this.healRotationsTab.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 417);
-            this.Controls.Add(this.groupBox4);
+            this.ClientSize = new System.Drawing.Size(827, 453);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -279,6 +315,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.botGroupsTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -305,6 +343,9 @@
         private System.Windows.Forms.Button addBotToGroup;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage botGroupsTab;
+        private System.Windows.Forms.TabPage healRotationsTab;
     }
 }
 
