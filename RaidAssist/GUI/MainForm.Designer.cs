@@ -34,22 +34,29 @@
             this.label2 = new System.Windows.Forms.Label();
             this.connectButton = new System.Windows.Forms.Button();
             this.characterComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.localCheckBox = new System.Windows.Forms.CheckBox();
             this.closeConnectionButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.botGroupsComboBox = new System.Windows.Forms.ComboBox();
             this.botsListBox = new System.Windows.Forms.ListBox();
             this.botGroupMembersListBox = new System.Windows.Forms.ListBox();
             this.deleteGroupButton = new System.Windows.Forms.Button();
             this.createGroupButton = new System.Windows.Forms.Button();
             this.renameGroupButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.addBotToGroup = new System.Windows.Forms.Button();
+            this.botRemoveFromGroup = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // loginTextBox
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(78, 11);
+            this.loginTextBox.Location = new System.Drawing.Point(67, 19);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(160, 20);
             this.loginTextBox.TabIndex = 0;
@@ -57,7 +64,7 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(78, 38);
+            this.passwordTextBox.Location = new System.Drawing.Point(67, 46);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(160, 20);
@@ -67,7 +74,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 15);
+            this.label1.Location = new System.Drawing.Point(6, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 2;
@@ -76,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 38);
+            this.label2.Location = new System.Drawing.Point(6, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 3;
@@ -84,7 +91,7 @@
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(163, 87);
+            this.connectButton.Location = new System.Drawing.Point(152, 95);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(75, 23);
             this.connectButton.TabIndex = 4;
@@ -95,27 +102,18 @@
             // characterComboBox
             // 
             this.characterComboBox.FormattingEnabled = true;
-            this.characterComboBox.Location = new System.Drawing.Point(347, 11);
+            this.characterComboBox.Location = new System.Drawing.Point(6, 19);
             this.characterComboBox.Name = "characterComboBox";
             this.characterComboBox.Size = new System.Drawing.Size(241, 21);
             this.characterComboBox.TabIndex = 5;
             this.characterComboBox.SelectedIndexChanged += new System.EventHandler(this.characterComboBox_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(244, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Select a character:";
             // 
             // localCheckBox
             // 
             this.localCheckBox.AutoSize = true;
             this.localCheckBox.Checked = true;
             this.localCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.localCheckBox.Location = new System.Drawing.Point(129, 64);
+            this.localCheckBox.Location = new System.Drawing.Point(118, 72);
             this.localCheckBox.Name = "localCheckBox";
             this.localCheckBox.Size = new System.Drawing.Size(109, 17);
             this.localCheckBox.TabIndex = 7;
@@ -125,7 +123,7 @@
             // 
             // closeConnectionButton
             // 
-            this.closeConnectionButton.Location = new System.Drawing.Point(82, 87);
+            this.closeConnectionButton.Location = new System.Drawing.Point(71, 95);
             this.closeConnectionButton.Name = "closeConnectionButton";
             this.closeConnectionButton.Size = new System.Drawing.Size(75, 23);
             this.closeConnectionButton.TabIndex = 8;
@@ -133,55 +131,37 @@
             this.closeConnectionButton.UseVisualStyleBackColor = true;
             this.closeConnectionButton.Click += new System.EventHandler(this.closeConnectionButton_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(310, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Bots:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(594, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Bot groups:";
-            // 
             // botGroupsComboBox
             // 
             this.botGroupsComboBox.FormattingEnabled = true;
-            this.botGroupsComboBox.Location = new System.Drawing.Point(657, 11);
+            this.botGroupsComboBox.Location = new System.Drawing.Point(12, 19);
             this.botGroupsComboBox.Name = "botGroupsComboBox";
-            this.botGroupsComboBox.Size = new System.Drawing.Size(182, 21);
+            this.botGroupsComboBox.Size = new System.Drawing.Size(235, 21);
             this.botGroupsComboBox.TabIndex = 12;
             this.botGroupsComboBox.SelectedIndexChanged += new System.EventHandler(this.botGroupsComboBox_SelectedIndexChanged);
             // 
             // botsListBox
             // 
             this.botsListBox.FormattingEnabled = true;
-            this.botsListBox.Location = new System.Drawing.Point(347, 38);
+            this.botsListBox.Location = new System.Drawing.Point(6, 46);
             this.botsListBox.Name = "botsListBox";
-            this.botsListBox.Size = new System.Drawing.Size(241, 368);
+            this.botsListBox.Size = new System.Drawing.Size(241, 329);
             this.botsListBox.TabIndex = 9;
             this.botsListBox.SelectedIndexChanged += new System.EventHandler(this.botsListBox_SelectedIndexChanged);
             // 
             // botGroupMembersListBox
             // 
             this.botGroupMembersListBox.FormattingEnabled = true;
-            this.botGroupMembersListBox.Location = new System.Drawing.Point(657, 38);
+            this.botGroupMembersListBox.Location = new System.Drawing.Point(12, 46);
             this.botGroupMembersListBox.Name = "botGroupMembersListBox";
-            this.botGroupMembersListBox.Size = new System.Drawing.Size(181, 82);
+            this.botGroupMembersListBox.Size = new System.Drawing.Size(235, 82);
             this.botGroupMembersListBox.TabIndex = 9;
             // 
             // deleteGroupButton
             // 
-            this.deleteGroupButton.Location = new System.Drawing.Point(844, 64);
+            this.deleteGroupButton.Location = new System.Drawing.Point(12, 187);
             this.deleteGroupButton.Name = "deleteGroupButton";
-            this.deleteGroupButton.Size = new System.Drawing.Size(91, 23);
+            this.deleteGroupButton.Size = new System.Drawing.Size(104, 23);
             this.deleteGroupButton.TabIndex = 13;
             this.deleteGroupButton.Text = "Delete";
             this.deleteGroupButton.UseVisualStyleBackColor = true;
@@ -189,9 +169,9 @@
             // 
             // createGroupButton
             // 
-            this.createGroupButton.Location = new System.Drawing.Point(844, 11);
+            this.createGroupButton.Location = new System.Drawing.Point(12, 134);
             this.createGroupButton.Name = "createGroupButton";
-            this.createGroupButton.Size = new System.Drawing.Size(91, 23);
+            this.createGroupButton.Size = new System.Drawing.Size(104, 23);
             this.createGroupButton.TabIndex = 14;
             this.createGroupButton.Text = "Create";
             this.createGroupButton.UseVisualStyleBackColor = true;
@@ -199,42 +179,103 @@
             // 
             // renameGroupButton
             // 
-            this.renameGroupButton.Location = new System.Drawing.Point(844, 38);
+            this.renameGroupButton.Location = new System.Drawing.Point(12, 161);
             this.renameGroupButton.Name = "renameGroupButton";
-            this.renameGroupButton.Size = new System.Drawing.Size(91, 23);
+            this.renameGroupButton.Size = new System.Drawing.Size(104, 23);
             this.renameGroupButton.TabIndex = 15;
             this.renameGroupButton.Text = "Rename";
             this.renameGroupButton.UseVisualStyleBackColor = true;
             this.renameGroupButton.Click += new System.EventHandler(this.renameGroupButton_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.createGroupButton);
+            this.groupBox1.Controls.Add(this.renameGroupButton);
+            this.groupBox1.Controls.Add(this.botGroupsComboBox);
+            this.groupBox1.Controls.Add(this.deleteGroupButton);
+            this.groupBox1.Controls.Add(this.botGroupMembersListBox);
+            this.groupBox1.Location = new System.Drawing.Point(550, 11);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(253, 215);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Bot Group";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.botRemoveFromGroup);
+            this.groupBox2.Controls.Add(this.addBotToGroup);
+            this.groupBox2.Location = new System.Drawing.Point(550, 232);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(253, 174);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Bot Group Member";
+            // 
+            // addBotToGroup
+            // 
+            this.addBotToGroup.Location = new System.Drawing.Point(12, 19);
+            this.addBotToGroup.Name = "addBotToGroup";
+            this.addBotToGroup.Size = new System.Drawing.Size(104, 23);
+            this.addBotToGroup.TabIndex = 18;
+            this.addBotToGroup.Text = "Add";
+            this.addBotToGroup.UseVisualStyleBackColor = true;
+            // 
+            // botRemoveFromGroup
+            // 
+            this.botRemoveFromGroup.Location = new System.Drawing.Point(12, 48);
+            this.botRemoveFromGroup.Name = "botRemoveFromGroup";
+            this.botRemoveFromGroup.Size = new System.Drawing.Size(104, 23);
+            this.botRemoveFromGroup.TabIndex = 19;
+            this.botRemoveFromGroup.Text = "Remove";
+            this.botRemoveFromGroup.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.loginTextBox);
+            this.groupBox3.Controls.Add(this.passwordTextBox);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.connectButton);
+            this.groupBox3.Controls.Add(this.closeConnectionButton);
+            this.groupBox3.Controls.Add(this.localCheckBox);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(242, 129);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Please enter your login info";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.characterComboBox);
+            this.groupBox4.Controls.Add(this.botsListBox);
+            this.groupBox4.Location = new System.Drawing.Point(270, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(260, 394);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Select your character";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 429);
-            this.Controls.Add(this.renameGroupButton);
-            this.Controls.Add(this.createGroupButton);
-            this.Controls.Add(this.deleteGroupButton);
-            this.Controls.Add(this.botGroupsComboBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.botGroupMembersListBox);
-            this.Controls.Add(this.botsListBox);
-            this.Controls.Add(this.closeConnectionButton);
-            this.Controls.Add(this.localCheckBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.characterComboBox);
-            this.Controls.Add(this.connectButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.loginTextBox);
+            this.ClientSize = new System.Drawing.Size(816, 417);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "EQEmu Raid Assist";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -246,17 +287,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.ComboBox characterComboBox;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox localCheckBox;
         private System.Windows.Forms.Button closeConnectionButton;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox botGroupsComboBox;
         private System.Windows.Forms.ListBox botsListBox;
         private System.Windows.Forms.ListBox botGroupMembersListBox;
         private System.Windows.Forms.Button deleteGroupButton;
         private System.Windows.Forms.Button createGroupButton;
         private System.Windows.Forms.Button renameGroupButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button botRemoveFromGroup;
+        private System.Windows.Forms.Button addBotToGroup;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 
