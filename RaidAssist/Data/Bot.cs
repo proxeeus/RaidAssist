@@ -10,6 +10,7 @@ namespace RaidAssist.Data
     {
         public bool IsLeader { get; set; }
         public bool IsMember { get; set; }
+        public int GroupId { get; set; }
 
         public override string DisplayName
         {

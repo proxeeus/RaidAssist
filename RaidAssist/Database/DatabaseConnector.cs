@@ -201,10 +201,18 @@ namespace RaidAssist.Database
             return null;
         }
 
-        internal bool DeleteBotGroup(BotGroup botGroup)
+        internal bool DeleteBotGroup(BotGroup botGroup, bool lastMember = false)
         {
             if (_connection.State == System.Data.ConnectionState.Open)
             {
+                if(lastMember)
+                {
+                    var queryLeader = string.Format("delete from bot_groups where group_leader_id = {0};", botGroup.GroupLeaderId);
+                    var cmdRemove = new MySqlCommand(queryLeader, _connection);
+                    var removeResult = cmdRemove.ExecuteNonQuery();
+                    if (removeResult != -1)
+                        return true;
+                }
                 var memberQuery = string.Format("delete from bot_group_members where groups_index={0};", botGroup.GroupIndex);
                 var cmd = new MySqlCommand(memberQuery, _connection);
                 var result = cmd.ExecuteNonQuery();
@@ -218,6 +226,33 @@ namespace RaidAssist.Database
                 }
                 else
                     return false;
+            }
+            return false;
+        }
+
+        internal bool RemoveBotFromGroup(Bot bot, BotGroup botGroup)
+        {
+            if(_connection.State == System.Data.ConnectionState.Open)
+            {
+                var removeQuery = string.Format("delete from bot_group_members where bot_id = {0} and groups_index={1};", bot.Id, botGroup.GroupIndex);
+                var cmd = new MySqlCommand(removeQuery, _connection);
+                var result = cmd.ExecuteNonQuery();
+                if(result != -1)
+                {
+                    var botToRemove = botGroup.Members.Single(b => b.Id == bot.Id);
+                    botToRemove.IsMember = false;
+                    botGroup.Members.Remove(botToRemove);
+
+                    if(botGroup.Members.Count == 0) // this was the last bot and should be the leader, empty bot groups cannot exist, so we delete those as well.
+                    {
+                        botToRemove.IsLeader = false;
+                        var deleteGroup = DeleteBotGroup(botGroup, true);
+                        if (deleteGroup)
+                            return true;
+                    }
+                    
+                    return true;
+                }
             }
             return false;
         }
@@ -236,6 +271,7 @@ namespace RaidAssist.Database
                         {
                             var bot = new Bot();
                             bot.Id = Convert.ToInt32(dataReader["bot_id"]);
+                            bot.GroupId = Convert.ToInt32(dataReader["groups_index"]);
                             //bot.IsMember = true;
                             botGroupMembers.Add(bot);
                         }

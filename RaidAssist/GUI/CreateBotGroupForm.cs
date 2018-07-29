@@ -45,6 +45,7 @@ namespace RaidAssist.GUI
 
                 var botToModify = (from b in _character.Bots where _bot.Id == b.Id select b).FirstOrDefault();
                 botToModify.IsLeader = true;
+                botToModify.GroupId = botGroup.GroupIndex;
                 botGroup.Members.Add(botToModify);
                 _character.BotGroups.Add(botGroup);
                 this.NewGroup = botGroup;

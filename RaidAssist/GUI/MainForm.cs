@@ -159,14 +159,23 @@ namespace RaidAssist.GUI
         private void LoadBotGroupMembers(BotGroup botGroup)
         {
             if (botGroup != null)
+            {
                 botGroup.Members = _connector.LoadBotGroupMembers(botGroup);
-
+                if(botGroup.Members != null && botGroup.Members.Count > 0)
+                {
+                    foreach(var bot in botGroup.Members)
+                    {
+                        var botToModify = (from b in _user.SelectedCharacter.Bots where bot.Id == b.Id select b).FirstOrDefault();
+                        if (botToModify != null)
+                            botToModify.GroupId = botGroup.GroupIndex;
+                    }
+                }
+            }
         }
 
         private void LoadBots(Character selectedCharacter)
         {
             selectedCharacter.Bots = _connector.LoadBots(selectedCharacter);
-
         }
 
         private void closeConnectionButton_Click(object sender, EventArgs e)
@@ -248,7 +257,34 @@ namespace RaidAssist.GUI
 
         private void botRemoveFromGroup_Click(object sender, EventArgs e)
         {
+            if(_user.SelectedBot != null)
+            {
+                if(_user.SelectedBot.IsLeader && _user.SelectedBotGroup.Members.Count > 1 ) // Can't remove a Group Leader when other members are present
+                {
+                    MessageBox.Show("You cannot remove a Bot Leader from a Bot Group possessing other Bots. Remove other Bots first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
+                var removed = _connector.RemoveBotFromGroup(_user.SelectedBot, _user.SelectedBotGroup);
+                // Update relevant data lists post db-removal
+                if(_user.SelectedBotGroup.Members.Count > 1)
+                {
+                    var botToUpdate = (from b in _user.SelectedCharacter.Bots where b.Id == _user.SelectedBot.Id select b).FirstOrDefault();
+                    botToUpdate.IsMember = false;
+                }
+                else if (_user.SelectedBotGroup.Members.Count == 0)
+                {
+                    var groupToRemove = (from g in _user.SelectedCharacter.BotGroups where g.GroupIndex == _user.SelectedBotGroup.GroupIndex select g).FirstOrDefault();
+                    var botToUpdate = (from b in _user.SelectedCharacter.Bots where b.Id == _user.SelectedBot.Id select b).FirstOrDefault();
+                    botToUpdate.IsMember = false;
+                    botToUpdate.IsLeader = false;
+                    _user.SelectedCharacter.BotGroups.Remove(groupToRemove);
+                }
+
+                RefreshUI();
+            }
+            else
+                MessageBox.Show("You need to select a Bot belonging to this group.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void botGroupMembersListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -263,6 +299,11 @@ namespace RaidAssist.GUI
 
             if(_user.SelectedBot != null)
                 this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}] - [{2}]", _user.UserName, _user.SelectedCharacter.Name, _user.SelectedBot.Name);
+        }
+
+        private void addBotToGroup_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

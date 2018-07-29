@@ -221,6 +221,7 @@
             this.addBotToGroup.TabIndex = 18;
             this.addBotToGroup.Text = "Add";
             this.addBotToGroup.UseVisualStyleBackColor = true;
+            this.addBotToGroup.Click += new System.EventHandler(this.addBotToGroup_Click);
             // 
             // botRemoveFromGroup
             // 
