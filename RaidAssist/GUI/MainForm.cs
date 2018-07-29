@@ -265,6 +265,19 @@ namespace RaidAssist.GUI
                     return;
                 }
 
+                if (!_user.SelectedBot.IsMember)
+                {
+                    MessageBox.Show("You cannot remove a Bot not belonging to any existing Bot Group.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if(_user.SelectedBot.GroupId != _user.SelectedBotGroup.GroupIndex)
+                {
+                    MessageBox.Show("The selected Bot doesn't belong to the selected Bot Group.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
                 var removed = _connector.RemoveBotFromGroup(_user.SelectedBot, _user.SelectedBotGroup);
                 // Update relevant data lists post db-removal
                 if(_user.SelectedBotGroup.Members.Count > 1)
@@ -303,7 +316,37 @@ namespace RaidAssist.GUI
 
         private void addBotToGroup_Click(object sender, EventArgs e)
         {
+            if (_user.SelectedBot != null && _user.SelectedBotGroup != null)
+            {
+                if (_user.SelectedBotGroup.Members.Count() >= 6)
+                {
+                    MessageBox.Show("The selected Bot Group is already at maximum capacity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if(_user.SelectedBot.IsMember)
+                {
+                    MessageBox.Show("The selected Bot is already a member of a Bot Group.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
+                var addedToGroup = _connector.AddBotToGroup(_user.SelectedBot, _user.SelectedBotGroup);
+
+                if (addedToGroup)
+                {
+                    var botToUpdate = (from b in _user.SelectedCharacter.Bots where b.Id == _user.SelectedBot.Id select b).SingleOrDefault();
+                    botToUpdate.IsMember = true;
+                    botToUpdate.GroupId = _user.SelectedBotGroup.GroupIndex;
+
+                    var botGroupToUpdate = (from g in _user.SelectedCharacter.BotGroups where g.GroupIndex == _user.SelectedBotGroup.GroupIndex select g).FirstOrDefault();
+                    if (botGroupToUpdate.Members == null)
+                        botGroupToUpdate.Members = new List<Bot>();
+                    botGroupToUpdate.Members.Add(botToUpdate);
+
+                    RefreshUI();
+                }
+            }
+            else
+                MessageBox.Show("You need to select a Bot and a Bot Group to add the Bot to.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

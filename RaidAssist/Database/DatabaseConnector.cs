@@ -230,6 +230,27 @@ namespace RaidAssist.Database
             return false;
         }
 
+        internal bool AddBotToGroup(Bot bot, BotGroup botGroup)
+        {
+            if (_connection.State == System.Data.ConnectionState.Open)
+            {
+                var addQuery = string.Format("insert into bot_group_members (groups_index, bot_id) values ('{0}', '{1}');", botGroup.GroupIndex, bot.Id);
+                var cmd = new MySqlCommand(addQuery, _connection);
+                var result = cmd.ExecuteNonQuery();
+                if(result != -1)
+                {
+                    if (botGroup.Members == null)
+                        botGroup.Members = new List<Bot>();
+                    bot.GroupId = botGroup.GroupIndex;
+                    bot.IsMember = true;
+                    botGroup.Members.Add(bot);
+
+                    return true;
+                }
+            }
+           return false;
+        }
+
         internal bool RemoveBotFromGroup(Bot bot, BotGroup botGroup)
         {
             if(_connection.State == System.Data.ConnectionState.Open)
@@ -237,7 +258,10 @@ namespace RaidAssist.Database
                 var removeQuery = string.Format("delete from bot_group_members where bot_id = {0} and groups_index={1};", bot.Id, botGroup.GroupIndex);
                 var cmd = new MySqlCommand(removeQuery, _connection);
                 var result = cmd.ExecuteNonQuery();
-                if(result != -1)
+
+                if (result == 0)
+                    return false;
+                if (result != -1 )
                 {
                     var botToRemove = botGroup.Members.Single(b => b.Id == bot.Id);
                     botToRemove.IsMember = false;
