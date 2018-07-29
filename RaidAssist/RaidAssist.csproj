@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseConnector.cs" />
     <Compile Include="Data\BotGroup.cs" />
+    <Compile Include="Data\HealRotation.cs" />
     <Compile Include="GUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
