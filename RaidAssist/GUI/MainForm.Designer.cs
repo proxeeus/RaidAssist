@@ -156,6 +156,7 @@
             this.botGroupMembersListBox.Name = "botGroupMembersListBox";
             this.botGroupMembersListBox.Size = new System.Drawing.Size(235, 82);
             this.botGroupMembersListBox.TabIndex = 9;
+            this.botGroupMembersListBox.SelectedIndexChanged += new System.EventHandler(this.botGroupMembersListBox_SelectedIndexChanged);
             // 
             // deleteGroupButton
             // 
@@ -229,6 +230,7 @@
             this.botRemoveFromGroup.TabIndex = 19;
             this.botRemoveFromGroup.Text = "Remove";
             this.botRemoveFromGroup.UseVisualStyleBackColor = true;
+            this.botRemoveFromGroup.Click += new System.EventHandler(this.botRemoveFromGroup_Click);
             // 
             // groupBox3
             // 

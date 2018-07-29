@@ -239,5 +239,24 @@ namespace RaidAssist.GUI
             else
                 MessageBox.Show("You need to select a Group Bot to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void botRemoveFromGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botGroupMembersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var intermediateBot = ((ListBox)sender).SelectedItem as Bot;
+            if (intermediateBot != null)
+            {
+                var realSelectedBot = (from b in _user.SelectedCharacter.Bots where intermediateBot.Id == b.Id select b).FirstOrDefault();
+
+                _user.SelectedBot = realSelectedBot;
+            }
+
+            if(_user.SelectedBot != null)
+                this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}] - [{2}]", _user.UserName, _user.SelectedCharacter.Name, _user.SelectedBot.Name);
+        }
     }
 }
