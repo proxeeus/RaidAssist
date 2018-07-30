@@ -33,7 +33,7 @@ namespace RaidAssist.GUI
             if(loginTextBox.Text != string.Empty && passwordTextBox.Text != string.Empty)
             {
                 BaseLogin();
-
+                LoadCharacterBots();
             }
         }
 
@@ -49,24 +49,27 @@ namespace RaidAssist.GUI
                 if (_connector.OpenConnection())
                 {
                     // 1. Log the user in
-                    _user = _connector.LogIn(_user, localCheckBox.Checked);
-
-                    // 2. Gets a list of all his characters
-                    if (_user.AccountId != -1)
-                    {
-                        _user.Characters = _connector.LoadCharacters(_user);
-                        // 3. Dynamically bind the character list to the combobox for event-driven updates.
-                        if (_user.Characters.Count > 0)
-                        {
-                            characterComboBox.DataSource = _user.Characters;
-                            characterComboBox.DisplayMember = "DisplayName";
-                        }
-                    }
+                    _user = _connector.LogIn(_user, localCheckBox.Checked);   
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadCharacterBots()
+        {
+            // 2. Gets a list of all his characters
+            if (_user.AccountId != -1)
+            {
+                _user.Characters = _connector.LoadCharacters(_user);
+                // 3. Dynamically bind the character list to the combobox for event-driven updates.
+                if (_user.Characters.Count > 0)
+                {
+                    characterComboBox.DataSource = _user.Characters;
+                    characterComboBox.DisplayMember = "DisplayName";
+                }
             }
         }
 
