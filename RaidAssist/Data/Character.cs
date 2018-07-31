@@ -10,6 +10,7 @@ namespace RaidAssist.Data
     {
         public List<Bot> Bots { get; set; }
         public List<BotGroup> BotGroups { get; set; }
+        public List<HealRotation> HealRotations { get; set; }
         public int Id { get; set; }
         public int ClassId { get; set; }
         public string Name { get; set; }

@@ -201,6 +201,78 @@ namespace RaidAssist.Database
             return null;
         }
 
+        internal HealRotation LoadBotHealRotation(Bot bot)
+        {
+            var healRotation = new HealRotation();
+            if(_connection.State == System.Data.ConnectionState.Open)
+            {
+                var queryHealRotation = string.Format("select * from bot_heal_rotations where bot_id={0};", bot.Id);
+                var cmdRemove = new MySqlCommand(queryHealRotation, _connection);
+                using (var dataReader = cmdRemove.ExecuteReader())
+                {
+                    if (!dataReader.HasRows)
+                        return null;
+                    while(dataReader.Read())
+                    {
+                        bot.HealRotationId = Convert.ToInt32(dataReader["heal_rotation_index"]);
+                        bot.IsHealRotationLeader = true;
+                        bot.IsHealRotationMember = true;
+
+                        healRotation.AdaptiveTargeting = Convert.ToInt32(dataReader["adaptive_targeting"]);
+                        healRotation.CastingOverride = Convert.ToInt32(dataReader["casting_override"]);
+                        healRotation.CriticalHPBase = Convert.ToSingle(dataReader["critical_hp_base"]);
+                        healRotation.CriticalHPChain = Convert.ToSingle(dataReader["critical_hp_chain"]);
+                        healRotation.CriticalHPCloth = Convert.ToSingle(dataReader["critical_hp_cloth"]);
+                        healRotation.CriticalHPLeather = Convert.ToSingle(dataReader["critical_hp_leather"]);
+                        healRotation.CriticalHPPlate = Convert.ToSingle(dataReader["critical_hp_plate"]);
+                        healRotation.SafeHPBase = Convert.ToSingle(dataReader["safe_hp_base"]);
+                        healRotation.SafeHPCloth = Convert.ToSingle(dataReader["safe_hp_cloth"]);
+                        healRotation.SafeHPChain = Convert.ToSingle(dataReader["safe_hp_chain"]);
+                        healRotation.SafeHPLeather = Convert.ToSingle(dataReader["safe_hp_leather"]);
+                        healRotation.SafeHPPlate = Convert.ToSingle(dataReader["safe_hp_plate"]);
+                        healRotation.FastHeals = Convert.ToInt32(dataReader["fast_heals"]);
+                        healRotation.Interval = Convert.ToInt32(dataReader["interval"]);
+                        healRotation.Id = Convert.ToInt32(dataReader["heal_rotation_index"]);
+                        healRotation.BotId = bot.Id;
+                    }
+                }
+                var queryHealRotationMembers = string.Format("select * from bot_heal_rotation_members where heal_rotation_index = {0};", healRotation.Id);
+                var cmdMembers = new MySqlCommand(queryHealRotationMembers, _connection);
+                using (var memberReader = cmdMembers.ExecuteReader())
+                {
+                    if (memberReader.HasRows)
+                        if (healRotation.Members == null)
+                            healRotation.Members = new List<Bot>();
+                    while (memberReader.Read())
+                    {
+                        var member = new Bot();
+                        member.HealRotationId = healRotation.Id;
+                        member.IsHealRotationMember = true;
+                        member.Id = Convert.ToInt32(memberReader["bot_id"]);
+                        healRotation.Members.Add(member);
+                    }
+                }
+
+                var queryHealRotationTargets = string.Format("select * from bot_heal_rotation_targets where heal_rotation_index = {0};", healRotation.Id);
+                var cmdTargets = new MySqlCommand(queryHealRotationTargets, _connection);
+                using (var targetReader = cmdTargets.ExecuteReader())
+                {
+                    if (targetReader.HasRows)
+                        if (healRotation.Targets == null)
+                            healRotation.Targets = new List<Character>();
+                    while (targetReader.Read())
+                    {
+                        var target = new Character();
+                        target.Name = Convert.ToString(targetReader["target_name"]);
+                        //target.Id = Convert.ToInt32(targetReader["target_index"]); Char or Bot ID will have to be determined later based on name :-(
+                        healRotation.Targets.Add(target);
+                    }
+                }
+                return healRotation;
+            }
+            return null;
+        }
+
         internal bool DeleteBotGroup(BotGroup botGroup, bool lastMember = false)
         {
             if (_connection.State == System.Data.ConnectionState.Open)

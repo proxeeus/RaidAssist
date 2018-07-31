@@ -34,6 +34,7 @@ namespace RaidAssist.GUI
             {
                 BaseLogin();
                 LoadCharacterBots();
+                LoadCharacterHealRotations();
             }
         }
 
@@ -55,6 +56,23 @@ namespace RaidAssist.GUI
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadCharacterHealRotations()
+        {
+            if(_user.SelectedCharacter != null && _user.SelectedCharacter.Bots != null && _user.SelectedCharacter.Bots.Count() > 0)
+            {
+                foreach(var bot in _user.SelectedCharacter.Bots)
+                {
+                    var healRotation = _connector.LoadBotHealRotation(bot);
+
+                    // after querying
+                    // update 
+                    // 1. the bot
+                    // 2. the rotation members
+                    // in the _user.SelectedCharacter.Bots
+                }
             }
         }
 
