@@ -28,5 +28,6 @@ namespace RaidAssist.Data
         public List<Bot> Members { get; set; }
         public List<Character> Targets { get; set; }
 
+        public string DisplayName { get { return string.Format("Heal rotation {0}.", Id); } }
     }
 }

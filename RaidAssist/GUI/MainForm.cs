@@ -66,12 +66,25 @@ namespace RaidAssist.GUI
                 foreach(var bot in _user.SelectedCharacter.Bots)
                 {
                     var healRotation = _connector.LoadBotHealRotation(bot);
+                    if(healRotation != null)
+                    {
+                        var botToUpdate = (from b in _user.SelectedCharacter.Bots where b.Id == bot.Id select b).FirstOrDefault();
+                        botToUpdate.HealRotationId = healRotation.Id;
+                        botToUpdate.IsHealRotationMember = true;
+                        if (bot.Id == healRotation.BotId)
+                            botToUpdate.IsHealRotationLeader = true;
+                        if(healRotation.Members != null && healRotation.Members.Count > 0)
+                            foreach(var rotationMember in healRotation.Members)
+                            {
+                                var memberToUpdate = (from b in _user.SelectedCharacter.Bots where b.Id == rotationMember.Id select b).FirstOrDefault();
+                                memberToUpdate.HealRotationId = healRotation.Id;
+                                memberToUpdate.IsHealRotationMember = true;
+                            }
 
-                    // after querying
-                    // update 
-                    // 1. the bot
-                    // 2. the rotation members
-                    // in the _user.SelectedCharacter.Bots
+                        if (_user.SelectedCharacter.HealRotations == null)
+                            _user.SelectedCharacter.HealRotations = new List<HealRotation>();
+                        _user.SelectedCharacter.HealRotations.Add(healRotation);
+                    }
                 }
             }
         }
@@ -152,7 +165,14 @@ namespace RaidAssist.GUI
                 botGroupsComboBox.DataSource = _user.SelectedCharacter.BotGroups;
                 botGroupsComboBox.DisplayMember = "DisplayName";
             }
-
+            if (_user.SelectedCharacter.HealRotations != null && _user.SelectedCharacter.HealRotations.Count > 0)
+            {
+                rotationsListBox.DataSource = null;
+                rotationsListBox.DisplayMember = null;
+                _user.SelectedCharacter.HealRotations = _user.SelectedCharacter.HealRotations.Where(w => w != null).Distinct().ToList();
+                rotationsListBox.DataSource = _user.SelectedCharacter.HealRotations;
+                rotationsListBox.DisplayMember = "DisplayName";
+            }
             if(_user != null && _user.SelectedCharacter != null && _user.SelectedBot != null)
                 this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}] - [{2}]", _user.UserName, _user.SelectedCharacter.Name, _user.SelectedBot.Name);
             else if(_user.SelectedBot == null)
