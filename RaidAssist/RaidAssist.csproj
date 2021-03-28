@@ -53,6 +53,14 @@
     <Compile Include="Database\DatabaseConnector.cs" />
     <Compile Include="Data\BotGroup.cs" />
     <Compile Include="Data\HealRotation.cs" />
+    <Compile Include="Data\Inventory.cs" />
+    <Compile Include="Data\InventoryEntry.cs" />
+    <Compile Include="GUI\BotInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BotInventory.Designer.cs">
+      <DependentUpon>BotInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +86,9 @@
     <Compile Include="Data\User.cs" />
     <Compile Include="Utils\Crypto.cs" />
     <Compile Include="Utils\Helpers.cs" />
+    <EmbeddedResource Include="GUI\BotInventory.resx">
+      <DependentUpon>BotInventory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

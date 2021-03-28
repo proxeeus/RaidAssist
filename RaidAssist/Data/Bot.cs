@@ -15,6 +15,8 @@ namespace RaidAssist.Data
         public bool IsHealRotationLeader { get; set; }
         public bool IsHealRotationMember { get; set; }
 
+        public Inventory Inventory { get; set; }
+
         public override string DisplayName
         {
             get
