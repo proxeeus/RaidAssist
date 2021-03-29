@@ -174,9 +174,16 @@ namespace RaidAssist.GUI
                 rotationsListBox.DisplayMember = "DisplayName";
             }
             if(_user != null && _user.SelectedCharacter != null && _user.SelectedBot != null)
+            {
                 this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}] - [{2}]", _user.UserName, _user.SelectedCharacter.Name, _user.SelectedBot.Name);
+                inventoryButton.Enabled = true;
+            }
+                
             else if(_user.SelectedBot == null)
+            {
                 this.Text = string.Format("EQEmu Raid Assist - [{0}] - [{1}]", _user.UserName, _user.SelectedCharacter.Name);
+                inventoryButton.Enabled = false;
+            }
         }
 
         private void LoatBotGroups(Character selectedCharacter)
@@ -423,6 +430,15 @@ namespace RaidAssist.GUI
             }
             else
                 MessageBox.Show("You need to select a Bot and a Bot Group to add the Bot to.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void InventoryButton_Click(object sender, EventArgs e)
+        {
+            if (_user != null && _user.SelectedCharacter != null && _user.SelectedBot != null)
+            {
+                var botInventory = new BotInventory(_user.SelectedBot, _connector);
+                botInventory.ShowDialog();
+            }
         }
     }
 }

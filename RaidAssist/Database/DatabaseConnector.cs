@@ -400,7 +400,11 @@ namespace RaidAssist.Database
 
             if (_connection.State == System.Data.ConnectionState.Open)
             {
-                var query = string.Format("select * from bot_inventories where bot_id = {0};", bot.Id);
+                var query = string.Format(
+                    @"select bot_inventories.item_id, bot_inventories.inventories_index, bot_inventories.bot_id, bot_inventories.slot_id, items.Name
+                        from bot_inventories
+                        inner join items on items.id = bot_inventories.item_id
+                        where bot_inventories.bot_id = {0}; ", bot.Id);
                 var cmd = new MySqlCommand(query, _connection);
                 using (var dataReader = cmd.ExecuteReader())
                 {
@@ -412,20 +416,8 @@ namespace RaidAssist.Database
                             inventoryEntry.Id = Convert.ToInt32(dataReader["inventories_index"]);
                             inventoryEntry.BotId = Convert.ToInt32(dataReader["bot_id"]);
                             inventoryEntry.ItemId = Convert.ToInt32(dataReader["item_id"]);
-                            inventoryEntry.InstColor = Convert.ToInt64(dataReader["inst_color"]);
-                            inventoryEntry.InstCharges = Convert.ToInt32(dataReader["inst_charges"]);
-                            inventoryEntry.InstCustomData = Convert.ToString(dataReader["inst_custom_data"]);
-                            inventoryEntry.InstNoDrop = Convert.ToInt32(dataReader["inst_no_drop"]);
-                            inventoryEntry.OrnamentIdFile = Convert.ToInt32(dataReader["ornament_id_file"]);
-                            inventoryEntry.OrnamentIcon = Convert.ToInt32(dataReader["ornament_icon"]);
-                            inventoryEntry.OrnamentHeroModel = Convert.ToInt32(dataReader["ornament_hero_model"]);
                             inventoryEntry.SlotId = Convert.ToInt32(dataReader["slot_id"]);
-                            inventoryEntry.Augment1 = Convert.ToInt32(dataReader["augment_1"]);
-                            inventoryEntry.Augment2 = Convert.ToInt32(dataReader["augment_2"]);
-                            inventoryEntry.Augment3 = Convert.ToInt32(dataReader["augment_3"]);
-                            inventoryEntry.Augment4 = Convert.ToInt32(dataReader["augment_4"]);
-                            inventoryEntry.Augment5 = Convert.ToInt32(dataReader["augment_5"]);
-                            inventoryEntry.Augment6 = Convert.ToInt32(dataReader["augment_6"]);
+                            inventoryEntry.ItemName = dataReader["Name"].ToString();
 
                             botInventoryEntries.Add(inventoryEntry);
                         }
