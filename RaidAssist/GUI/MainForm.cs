@@ -35,6 +35,7 @@ namespace RaidAssist.GUI
                 BaseLogin();
                 LoadCharacterBots();
                 LoadCharacterHealRotations();
+                RefreshUI();
             }
         }
 
@@ -133,9 +134,14 @@ namespace RaidAssist.GUI
             botsListBox.DisplayMember = null;
             botGroupMembersListBox.DataSource = null;
             botGroupMembersListBox.DisplayMember = null;
+            rotationsListBox.DataSource = null;
+            rotationsListBox.DisplayMember = null;
+            rotationMembersListBox.DataSource = null;
+            rotationMembersListBox.DisplayMember = null;
 
             LoadBots(_user.SelectedCharacter);
             LoatBotGroups(_user.SelectedCharacter); // Based on all bots IDs, will return a list of Groups led by one bot
+            //LoadCharacterHealRotations();
             RefreshUI();
         }
 
@@ -169,9 +175,32 @@ namespace RaidAssist.GUI
             {
                 rotationsListBox.DataSource = null;
                 rotationsListBox.DisplayMember = null;
+                rotationMembersListBox.DataSource = null;
+                rotationMembersListBox.DisplayMember = null;
                 _user.SelectedCharacter.HealRotations = _user.SelectedCharacter.HealRotations.Where(w => w != null).Distinct().ToList();
                 rotationsListBox.DataSource = _user.SelectedCharacter.HealRotations;
                 rotationsListBox.DisplayMember = "DisplayName";
+                foreach(var rotation in _user.SelectedCharacter.HealRotations)
+                {
+                    if(rotation.Members != null || rotation.Members.Count > 0)
+                    {
+                        var members = new List<Bot>();
+                        foreach(var bot in _user.SelectedCharacter.Bots)
+                        {
+                            if((bot.IsHealRotationLeader || bot.IsHealRotationMember) && bot.HealRotationId > 0)
+                            {
+                                members.Add(bot);
+                            }
+                        }
+                        rotationMembersListBox.DataSource = members;
+                        rotationMembersListBox.DisplayMember = "DisplayName";
+                    }
+
+                    if(rotation.Targets != null && rotation.Targets.Count > 0)
+                    {
+                        rotationTargetTextBox.Text = rotation.Targets[0].Name;   // Will probably need to be a list at some point
+                    }
+                }
             }
             if(_user != null && _user.SelectedCharacter != null && _user.SelectedBot != null)
             {
@@ -439,6 +468,11 @@ namespace RaidAssist.GUI
                 var botInventory = new BotInventory(_user.SelectedBot, _connector);
                 botInventory.ShowDialog();
             }
+        }
+
+        private void rotationsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -175,6 +175,28 @@ namespace RaidAssist.Database
                                 bot.IsMember = true;
                         }
                     }
+
+                    query = string.Format("select * from bot_heal_rotations where bot_id={0}", bot.Id);
+                    cmd = new MySqlCommand(query, _connection);
+                    using (var dataReader = cmd.ExecuteReader())
+                    {
+                        while(dataReader.Read())
+                        {
+                            bot.HealRotationId = Convert.ToInt32(dataReader["heal_rotation_index"]);
+                            bot.IsHealRotationLeader = true;
+                        }
+                    }
+
+                    query = string.Format("select * from bot_heal_rotation_members where bot_id={0}", bot.Id);
+                    cmd = new MySqlCommand(query, _connection);
+                    using (var dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            bot.HealRotationId = Convert.ToInt32(dataReader["heal_rotation_index"]);
+                            bot.IsHealRotationMember = true;
+                        }
+                    }
                 }
             }
             return bots;

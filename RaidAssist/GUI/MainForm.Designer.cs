@@ -48,6 +48,7 @@
             this.addBotToGroup = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.inventoryButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.botGroupsTab = new System.Windows.Forms.TabPage();
             this.healRotationsTab = new System.Windows.Forms.TabPage();
@@ -84,7 +85,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.intervalTextBox = new System.Windows.Forms.TextBox();
             this.rotationsListBox = new System.Windows.Forms.ListBox();
-            this.inventoryButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -98,7 +98,7 @@
             // loginTextBox
             // 
             this.loginTextBox.Location = new System.Drawing.Point(89, 23);
-            this.loginTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loginTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(212, 22);
             this.loginTextBox.TabIndex = 0;
@@ -107,7 +107,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(89, 57);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(212, 22);
@@ -137,7 +137,7 @@
             // connectButton
             // 
             this.connectButton.Location = new System.Drawing.Point(203, 117);
-            this.connectButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.connectButton.Margin = new System.Windows.Forms.Padding(4);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(100, 28);
             this.connectButton.TabIndex = 4;
@@ -149,7 +149,7 @@
             // 
             this.characterComboBox.FormattingEnabled = true;
             this.characterComboBox.Location = new System.Drawing.Point(8, 23);
-            this.characterComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.characterComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.characterComboBox.Name = "characterComboBox";
             this.characterComboBox.Size = new System.Drawing.Size(320, 24);
             this.characterComboBox.TabIndex = 5;
@@ -161,7 +161,7 @@
             this.localCheckBox.Checked = true;
             this.localCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.localCheckBox.Location = new System.Drawing.Point(157, 89);
-            this.localCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.localCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.localCheckBox.Name = "localCheckBox";
             this.localCheckBox.Size = new System.Drawing.Size(142, 21);
             this.localCheckBox.TabIndex = 7;
@@ -172,7 +172,7 @@
             // closeConnectionButton
             // 
             this.closeConnectionButton.Location = new System.Drawing.Point(95, 117);
-            this.closeConnectionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeConnectionButton.Margin = new System.Windows.Forms.Padding(4);
             this.closeConnectionButton.Name = "closeConnectionButton";
             this.closeConnectionButton.Size = new System.Drawing.Size(100, 28);
             this.closeConnectionButton.TabIndex = 8;
@@ -184,7 +184,7 @@
             // 
             this.botGroupsComboBox.FormattingEnabled = true;
             this.botGroupsComboBox.Location = new System.Drawing.Point(16, 23);
-            this.botGroupsComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botGroupsComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.botGroupsComboBox.Name = "botGroupsComboBox";
             this.botGroupsComboBox.Size = new System.Drawing.Size(312, 24);
             this.botGroupsComboBox.TabIndex = 12;
@@ -195,7 +195,7 @@
             this.botsListBox.FormattingEnabled = true;
             this.botsListBox.ItemHeight = 16;
             this.botsListBox.Location = new System.Drawing.Point(8, 57);
-            this.botsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botsListBox.Margin = new System.Windows.Forms.Padding(4);
             this.botsListBox.Name = "botsListBox";
             this.botsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.botsListBox.Size = new System.Drawing.Size(320, 420);
@@ -207,7 +207,7 @@
             this.botGroupMembersListBox.FormattingEnabled = true;
             this.botGroupMembersListBox.ItemHeight = 16;
             this.botGroupMembersListBox.Location = new System.Drawing.Point(16, 57);
-            this.botGroupMembersListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botGroupMembersListBox.Margin = new System.Windows.Forms.Padding(4);
             this.botGroupMembersListBox.Name = "botGroupMembersListBox";
             this.botGroupMembersListBox.Size = new System.Drawing.Size(312, 100);
             this.botGroupMembersListBox.TabIndex = 9;
@@ -216,7 +216,7 @@
             // deleteGroupButton
             // 
             this.deleteGroupButton.Location = new System.Drawing.Point(16, 230);
-            this.deleteGroupButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteGroupButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteGroupButton.Name = "deleteGroupButton";
             this.deleteGroupButton.Size = new System.Drawing.Size(139, 28);
             this.deleteGroupButton.TabIndex = 13;
@@ -227,7 +227,7 @@
             // createGroupButton
             // 
             this.createGroupButton.Location = new System.Drawing.Point(16, 165);
-            this.createGroupButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createGroupButton.Margin = new System.Windows.Forms.Padding(4);
             this.createGroupButton.Name = "createGroupButton";
             this.createGroupButton.Size = new System.Drawing.Size(139, 28);
             this.createGroupButton.TabIndex = 14;
@@ -238,7 +238,7 @@
             // renameGroupButton
             // 
             this.renameGroupButton.Location = new System.Drawing.Point(16, 198);
-            this.renameGroupButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.renameGroupButton.Margin = new System.Windows.Forms.Padding(4);
             this.renameGroupButton.Name = "renameGroupButton";
             this.renameGroupButton.Size = new System.Drawing.Size(139, 28);
             this.renameGroupButton.TabIndex = 15;
@@ -254,9 +254,9 @@
             this.groupBox1.Controls.Add(this.deleteGroupButton);
             this.groupBox1.Controls.Add(this.botGroupMembersListBox);
             this.groupBox1.Location = new System.Drawing.Point(472, 7);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(337, 265);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
@@ -267,9 +267,9 @@
             this.groupBox2.Controls.Add(this.botRemoveFromGroup);
             this.groupBox2.Controls.Add(this.addBotToGroup);
             this.groupBox2.Location = new System.Drawing.Point(472, 280);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(337, 214);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
@@ -278,7 +278,7 @@
             // botRemoveFromGroup
             // 
             this.botRemoveFromGroup.Location = new System.Drawing.Point(16, 59);
-            this.botRemoveFromGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botRemoveFromGroup.Margin = new System.Windows.Forms.Padding(4);
             this.botRemoveFromGroup.Name = "botRemoveFromGroup";
             this.botRemoveFromGroup.Size = new System.Drawing.Size(139, 28);
             this.botRemoveFromGroup.TabIndex = 19;
@@ -289,7 +289,7 @@
             // addBotToGroup
             // 
             this.addBotToGroup.Location = new System.Drawing.Point(16, 23);
-            this.addBotToGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addBotToGroup.Margin = new System.Windows.Forms.Padding(4);
             this.addBotToGroup.Name = "addBotToGroup";
             this.addBotToGroup.Size = new System.Drawing.Size(139, 28);
             this.addBotToGroup.TabIndex = 18;
@@ -307,9 +307,9 @@
             this.groupBox3.Controls.Add(this.closeConnectionButton);
             this.groupBox3.Controls.Add(this.localCheckBox);
             this.groupBox3.Location = new System.Drawing.Point(16, 15);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(323, 159);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
@@ -321,20 +321,32 @@
             this.groupBox4.Controls.Add(this.characterComboBox);
             this.groupBox4.Controls.Add(this.botsListBox);
             this.groupBox4.Location = new System.Drawing.Point(8, 7);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(456, 485);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Select your character";
+            // 
+            // inventoryButton
+            // 
+            this.inventoryButton.Enabled = false;
+            this.inventoryButton.Location = new System.Drawing.Point(336, 57);
+            this.inventoryButton.Margin = new System.Windows.Forms.Padding(4);
+            this.inventoryButton.Name = "inventoryButton";
+            this.inventoryButton.Size = new System.Drawing.Size(112, 28);
+            this.inventoryButton.TabIndex = 15;
+            this.inventoryButton.Text = "Inventory";
+            this.inventoryButton.UseVisualStyleBackColor = true;
+            this.inventoryButton.Click += new System.EventHandler(this.InventoryButton_Click);
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.botGroupsTab);
             this.tabControl1.Controls.Add(this.healRotationsTab);
             this.tabControl1.Location = new System.Drawing.Point(352, 15);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(825, 535);
@@ -346,9 +358,9 @@
             this.botGroupsTab.Controls.Add(this.groupBox1);
             this.botGroupsTab.Controls.Add(this.groupBox2);
             this.botGroupsTab.Location = new System.Drawing.Point(4, 25);
-            this.botGroupsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botGroupsTab.Margin = new System.Windows.Forms.Padding(4);
             this.botGroupsTab.Name = "botGroupsTab";
-            this.botGroupsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.botGroupsTab.Padding = new System.Windows.Forms.Padding(4);
             this.botGroupsTab.Size = new System.Drawing.Size(817, 506);
             this.botGroupsTab.TabIndex = 0;
             this.botGroupsTab.Text = "Bots & Groups";
@@ -360,10 +372,10 @@
             this.healRotationsTab.Controls.Add(this.groupBox5);
             this.healRotationsTab.Controls.Add(this.rotationsListBox);
             this.healRotationsTab.Location = new System.Drawing.Point(4, 25);
-            this.healRotationsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.healRotationsTab.Margin = new System.Windows.Forms.Padding(4);
             this.healRotationsTab.Name = "healRotationsTab";
-            this.healRotationsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.healRotationsTab.Size = new System.Drawing.Size(736, 506);
+            this.healRotationsTab.Padding = new System.Windows.Forms.Padding(4);
+            this.healRotationsTab.Size = new System.Drawing.Size(817, 506);
             this.healRotationsTab.TabIndex = 1;
             this.healRotationsTab.Text = "Heal Rotations";
             this.healRotationsTab.UseVisualStyleBackColor = true;
@@ -373,9 +385,9 @@
             this.rotationMembersListBox.FormattingEnabled = true;
             this.rotationMembersListBox.ItemHeight = 16;
             this.rotationMembersListBox.Location = new System.Drawing.Point(155, 7);
-            this.rotationMembersListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rotationMembersListBox.Margin = new System.Windows.Forms.Padding(4);
             this.rotationMembersListBox.Name = "rotationMembersListBox";
-            this.rotationMembersListBox.Size = new System.Drawing.Size(139, 484);
+            this.rotationMembersListBox.Size = new System.Drawing.Size(206, 484);
             this.rotationMembersListBox.TabIndex = 2;
             // 
             // groupBox5
@@ -410,10 +422,10 @@
             this.groupBox5.Controls.Add(this.fastHealsTextBox);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.intervalTextBox);
-            this.groupBox5.Location = new System.Drawing.Point(303, 4);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Location = new System.Drawing.Point(369, 3);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(423, 492);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
@@ -432,7 +444,7 @@
             // rotationTargetTextBox
             // 
             this.rotationTargetTextBox.Location = new System.Drawing.Point(137, 363);
-            this.rotationTargetTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rotationTargetTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.rotationTargetTextBox.MaxLength = 64;
             this.rotationTargetTextBox.Name = "rotationTargetTextBox";
             this.rotationTargetTextBox.Size = new System.Drawing.Size(276, 22);
@@ -451,7 +463,7 @@
             // criticalHPPlateTextBox
             // 
             this.criticalHPPlateTextBox.Location = new System.Drawing.Point(364, 288);
-            this.criticalHPPlateTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.criticalHPPlateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.criticalHPPlateTextBox.Name = "criticalHPPlateTextBox";
             this.criticalHPPlateTextBox.Size = new System.Drawing.Size(49, 22);
             this.criticalHPPlateTextBox.TabIndex = 26;
@@ -470,7 +482,7 @@
             // criticalHPChainTextBox
             // 
             this.criticalHPChainTextBox.Location = new System.Drawing.Point(364, 255);
-            this.criticalHPChainTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.criticalHPChainTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.criticalHPChainTextBox.Name = "criticalHPChainTextBox";
             this.criticalHPChainTextBox.Size = new System.Drawing.Size(49, 22);
             this.criticalHPChainTextBox.TabIndex = 24;
@@ -489,7 +501,7 @@
             // criticalHPLeatherTextBox
             // 
             this.criticalHPLeatherTextBox.Location = new System.Drawing.Point(364, 222);
-            this.criticalHPLeatherTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.criticalHPLeatherTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.criticalHPLeatherTextBox.Name = "criticalHPLeatherTextBox";
             this.criticalHPLeatherTextBox.Size = new System.Drawing.Size(49, 22);
             this.criticalHPLeatherTextBox.TabIndex = 22;
@@ -508,7 +520,7 @@
             // criticalHPClothTextBox
             // 
             this.criticalHPClothTextBox.Location = new System.Drawing.Point(364, 190);
-            this.criticalHPClothTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.criticalHPClothTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.criticalHPClothTextBox.Name = "criticalHPClothTextBox";
             this.criticalHPClothTextBox.Size = new System.Drawing.Size(49, 22);
             this.criticalHPClothTextBox.TabIndex = 20;
@@ -527,7 +539,7 @@
             // criticalHPBaseTextBox
             // 
             this.criticalHPBaseTextBox.Location = new System.Drawing.Point(364, 158);
-            this.criticalHPBaseTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.criticalHPBaseTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.criticalHPBaseTextBox.Name = "criticalHPBaseTextBox";
             this.criticalHPBaseTextBox.Size = new System.Drawing.Size(49, 22);
             this.criticalHPBaseTextBox.TabIndex = 18;
@@ -546,7 +558,7 @@
             // safeHPPlateTextBox
             // 
             this.safeHPPlateTextBox.Location = new System.Drawing.Point(145, 288);
-            this.safeHPPlateTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.safeHPPlateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.safeHPPlateTextBox.Name = "safeHPPlateTextBox";
             this.safeHPPlateTextBox.Size = new System.Drawing.Size(49, 22);
             this.safeHPPlateTextBox.TabIndex = 16;
@@ -565,7 +577,7 @@
             // safeHPChainTextBox
             // 
             this.safeHPChainTextBox.Location = new System.Drawing.Point(145, 255);
-            this.safeHPChainTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.safeHPChainTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.safeHPChainTextBox.Name = "safeHPChainTextBox";
             this.safeHPChainTextBox.Size = new System.Drawing.Size(49, 22);
             this.safeHPChainTextBox.TabIndex = 14;
@@ -584,7 +596,7 @@
             // safeHPLeatherTextBox
             // 
             this.safeHPLeatherTextBox.Location = new System.Drawing.Point(145, 222);
-            this.safeHPLeatherTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.safeHPLeatherTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.safeHPLeatherTextBox.Name = "safeHPLeatherTextBox";
             this.safeHPLeatherTextBox.Size = new System.Drawing.Size(49, 22);
             this.safeHPLeatherTextBox.TabIndex = 12;
@@ -603,7 +615,7 @@
             // safeHPClothTextBox
             // 
             this.safeHPClothTextBox.Location = new System.Drawing.Point(145, 190);
-            this.safeHPClothTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.safeHPClothTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.safeHPClothTextBox.Name = "safeHPClothTextBox";
             this.safeHPClothTextBox.Size = new System.Drawing.Size(49, 22);
             this.safeHPClothTextBox.TabIndex = 10;
@@ -622,7 +634,7 @@
             // safeHPBaseTextBox
             // 
             this.safeHPBaseTextBox.Location = new System.Drawing.Point(145, 158);
-            this.safeHPBaseTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.safeHPBaseTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.safeHPBaseTextBox.Name = "safeHPBaseTextBox";
             this.safeHPBaseTextBox.Size = new System.Drawing.Size(49, 22);
             this.safeHPBaseTextBox.TabIndex = 8;
@@ -641,7 +653,7 @@
             // castingOverrideTextBox
             // 
             this.castingOverrideTextBox.Location = new System.Drawing.Point(364, 82);
-            this.castingOverrideTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.castingOverrideTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.castingOverrideTextBox.Name = "castingOverrideTextBox";
             this.castingOverrideTextBox.Size = new System.Drawing.Size(49, 22);
             this.castingOverrideTextBox.TabIndex = 6;
@@ -660,7 +672,7 @@
             // adaptiveTargetingTextBox
             // 
             this.adaptiveTargetingTextBox.Location = new System.Drawing.Point(145, 82);
-            this.adaptiveTargetingTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.adaptiveTargetingTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.adaptiveTargetingTextBox.Name = "adaptiveTargetingTextBox";
             this.adaptiveTargetingTextBox.Size = new System.Drawing.Size(49, 22);
             this.adaptiveTargetingTextBox.TabIndex = 4;
@@ -679,7 +691,7 @@
             // fastHealsTextBox
             // 
             this.fastHealsTextBox.Location = new System.Drawing.Point(364, 37);
-            this.fastHealsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fastHealsTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.fastHealsTextBox.Name = "fastHealsTextBox";
             this.fastHealsTextBox.Size = new System.Drawing.Size(49, 22);
             this.fastHealsTextBox.TabIndex = 2;
@@ -698,7 +710,7 @@
             // intervalTextBox
             // 
             this.intervalTextBox.Location = new System.Drawing.Point(145, 37);
-            this.intervalTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.intervalTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.intervalTextBox.Name = "intervalTextBox";
             this.intervalTextBox.Size = new System.Drawing.Size(49, 22);
             this.intervalTextBox.TabIndex = 0;
@@ -709,22 +721,11 @@
             this.rotationsListBox.FormattingEnabled = true;
             this.rotationsListBox.ItemHeight = 16;
             this.rotationsListBox.Location = new System.Drawing.Point(8, 7);
-            this.rotationsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rotationsListBox.Margin = new System.Windows.Forms.Padding(4);
             this.rotationsListBox.Name = "rotationsListBox";
             this.rotationsListBox.Size = new System.Drawing.Size(139, 484);
             this.rotationsListBox.TabIndex = 0;
-            // 
-            // inventoryButton
-            // 
-            this.inventoryButton.Enabled = false;
-            this.inventoryButton.Location = new System.Drawing.Point(336, 57);
-            this.inventoryButton.Margin = new System.Windows.Forms.Padding(4);
-            this.inventoryButton.Name = "inventoryButton";
-            this.inventoryButton.Size = new System.Drawing.Size(112, 28);
-            this.inventoryButton.TabIndex = 15;
-            this.inventoryButton.Text = "Inventory";
-            this.inventoryButton.UseVisualStyleBackColor = true;
-            this.inventoryButton.Click += new System.EventHandler(this.InventoryButton_Click);
+            this.rotationsListBox.SelectedIndexChanged += new System.EventHandler(this.rotationsListBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -734,7 +735,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "EQEmu Raid Assist";
